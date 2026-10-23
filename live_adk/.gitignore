@@ -1,0 +1,3 @@
+.venv/
+accountant/.env
+__pycache__/
