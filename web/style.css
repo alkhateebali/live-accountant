@@ -26,6 +26,7 @@
   --gain: 0.08;
   --wrap-h: 340px;
   --wrap-top: 62px;
+  --peek: 58px;   /* how much of the ledger sheet shows when collapsed: grabber + heading only */
   --inset: rgba(255, 255, 255, 0.1);
   --aux: rgba(192, 159, 248, 0.5);
   --label: 18px;
@@ -129,7 +130,7 @@ html, body { height: 100%; color: var(--ink); background: var(--page) fixed; tra
   display: flex; flex-direction: column; align-items: center;
   padding: 0 24px;
 }
-.orb-wrap { position: relative; height: var(--wrap-h); width: 100%; display: grid; place-items: center; flex-shrink: 0; margin-top: var(--wrap-top); }
+.orb-wrap { position: relative; height: var(--wrap-h); width: 100%; display: grid; place-items: center; flex: 0 1 var(--wrap-h); min-height: 260px; margin-top: var(--wrap-top); }
 /* soft blue glow behind the blob; it swells while the agent speaks */
 .orb-wrap::before {
   content: ""; position: absolute; left: 50%; top: 50%; width: 320px; height: 320px;
@@ -240,7 +241,9 @@ html, body { height: 100%; color: var(--ink); background: var(--page) fixed; tra
 
 /* controls */
 .controls {
-  position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom) + 100px);
+  /* in the layout flow, not floating: the bottom padding keeps the mic's outer rings (up to 62px past the button) above the collapsed sheet */
+  position: relative; flex-shrink: 0;
+  padding-bottom: calc(var(--peek) + 66px);
   display: flex; justify-content: center; align-items: center; gap: 28px;
   z-index: 3;
 }
@@ -285,7 +288,7 @@ html, body { height: 100%; color: var(--ink); background: var(--page) fixed; tra
 /* bottom sheet */
 .sheet {
   position: absolute; left: 0; right: 0; bottom: 0;
-  height: 70%; transform: translateY(calc(100% - 84px));
+  height: 70%; transform: translateY(calc(100% - var(--peek)));
   background: var(--sheet); backdrop-filter: blur(30px);
   border-radius: 28px 28px 0 0; padding: 0 20px 20px;
   box-shadow: 0 -10px 40px var(--shadow);
