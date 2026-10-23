@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#b9d0d4">
+  <title>Accountant ABE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app" data-state="idle">
+    <header class="bar">
+      <div class="bar-row">
+        <div class="pill" id="status-pill">
+          <span class="dot"></span>
+          <span id="status-text">Offline</span>
+          <span class="timer" id="timer">0:00</span>
+        </div>
+        <div class="actions">
+          <button class="lang" id="lang-btn" aria-label="Language, English or Arabic">
+            <span data-l="en">EN</span><span data-l="ar">AR</span>
+          </button>
+          <button class="btn tiny" id="theme-btn" aria-label="Toggle light and dark theme">
+            <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18V3Zm0-2a11 11 0 1 1 0 22 11 11 0 0 1 0-22Z"/></svg>
+          </button>
+        </div>
+      </div>
+      <h1 class="title" id="eyebrow">Accountant <b>ABE</b></h1>
+    </header>
+
+    <section class="stage">
+      <div class="orb-wrap">
+        <div class="card-stack">
+          <i class="layer l3"></i><i class="layer l2"></i><i class="layer l1"></i>
+          <div class="card">
+            <div class="orb" id="orb"></div>
+          </div>
+        </div>
+      </div>
+      <p class="state-label" id="state-label">Tap to start</p>
+      <div class="transcript" id="transcript" aria-live="polite" hidden></div>
+    </section>
+
+    <footer class="controls">
+      <button class="btn small" id="mute-btn" aria-label="Mute">
+        <svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg>
+      </button>
+      <div class="mic-wrap">
+        <i class="ripple"></i><i class="ripple"></i><i class="ripple"></i>
+        <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i>
+        <button class="btn main" id="talk-btn" aria-label="Start">
+          <svg viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V22h2v-3.08A7 7 0 0 0 19 12h-2Z"/></svg>
+        </button>
+      </div>
+      <button class="btn small end" id="end-btn" aria-label="End">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      </button>
+    </footer>
+
+    <section class="sheet" id="sheet">
+      <button class="grabber" id="grabber" aria-label="Toggle ledger"></button>
+      <div class="sheet-head">
+        <h2 id="month-title">This month's spending</h2>
+        <span class="total" id="total">$0.00</span>
+      </div>
+      <ul class="ledger" id="ledger"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
