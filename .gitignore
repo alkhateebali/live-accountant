@@ -43,3 +43,6 @@ crash.log
 .vscode/
 *.swp
 .DS_Store
+
+# Personal notes, not part of the project
+live-accountant.md
